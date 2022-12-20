@@ -3,11 +3,11 @@ package com.example.learnlanguage;
 public class Video {
 
     String id;
-    String name;
+    String title;
     String description;
-    String postedDate;
+    String uploadedTime;
     String numberOfViews;
-    String companyName;
-    String companyLogo;
+    String channelName;
+    String channelLogoUrl;
     String imageUrl;
 }
