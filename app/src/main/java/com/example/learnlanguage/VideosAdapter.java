@@ -10,12 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class VideosAdapter extends RecyclerView.Adapter<VideoViewHolder> {
 
-    private ArrayList<Video> videos;
+    private List<Video> videos;
 
-    public void setVideos(ArrayList<Video> videos) {
+    public void setVideos(List<Video> videos) {
         this.videos = videos;
         notifyDataSetChanged();
     }
