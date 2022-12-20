@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -25,9 +27,23 @@ public class VideosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_videos);
         getSupportActionBar().setTitle("Videos");
-        fetchVideos();
         setupVideosRv();
         setupVideosAdapter();
+        handleAdd();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        fetchVideos();
+    }
+
+    private void handleAdd() {
+        Button addBtn = findViewById(R.id.add_btn);
+        addBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(this, BaseAddEditVideoActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void setupVideosRv() {
