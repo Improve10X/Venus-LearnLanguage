@@ -3,9 +3,7 @@ package com.example.learnlanguage;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,7 +14,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class VideosActivity extends AppCompatActivity {
+public class VideosActivity extends BaseActivity {
 
     private ArrayList<Video> videos = new ArrayList<>();
     private RecyclerView videosRv;
@@ -41,7 +39,7 @@ public class VideosActivity extends AppCompatActivity {
     private void handleAdd() {
         Button addBtn = findViewById(R.id.add_btn);
         addBtn.setOnClickListener(view -> {
-            Intent intent = new Intent(this, BaseAddEditVideoActivity.class);
+            Intent intent = new Intent(this, AddVideoActivity.class);
             startActivity(intent);
         });
     }
@@ -70,8 +68,6 @@ public class VideosActivity extends AppCompatActivity {
 
 
     private void fetchVideos() {
-        VideosApi videosApi = new VideosApi();
-        VideosService videosService = videosApi.createVideoService();
         Call<List<Video>> call = videosService.fetchVideos();
         call.enqueue(new Callback<List<Video>>() {
             @Override
@@ -82,31 +78,29 @@ public class VideosActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Video>> call, Throwable t) {
-                Toast.makeText(VideosActivity.this, "Failed to fetch videos", Toast.LENGTH_SHORT).show();
+                showToast("Failed to load the Videos");
             }
         });
     }
 
     private void deleteVideo(String id) {
-        VideosApi videosApi = new VideosApi();
-        VideosService videosService = videosApi.createVideoService();
         Call<Void> call = videosService.deleteVideo(id);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                Toast.makeText(VideosActivity.this, "Successfully deleted", Toast.LENGTH_SHORT).show();
+               showToast("Successfully deleted the Video");
                 fetchVideos();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(VideosActivity.this, "failed to delete the video", Toast.LENGTH_SHORT).show();
+                showToast("failed to delete the video");
             }
         });
     }
 
     private void editVideo(Video video) {
-        Intent intent = new Intent(this, BaseAddEditVideoActivity.class);
+        Intent intent = new Intent(this, EditVideoActivity.class);
         intent.putExtra("Video", video);
         startActivity(intent);
     }
