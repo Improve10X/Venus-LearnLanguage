@@ -2,9 +2,11 @@ package com.example.learnlanguage;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Video {
+import java.io.Serializable;
 
-@SerializedName("_id")
+public class Video implements Serializable {
+
+    @SerializedName("_id")
     String id;
     String title;
     String description;

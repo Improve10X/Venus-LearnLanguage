@@ -62,7 +62,7 @@ public class VideosActivity extends AppCompatActivity {
 
             @Override
             public void onEdit(Video video) {
-
+                editVideo(video);
             }
         });
         videosRv.setAdapter(videosAdapter);
@@ -103,5 +103,11 @@ public class VideosActivity extends AppCompatActivity {
                 Toast.makeText(VideosActivity.this, "failed to delete the video", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void editVideo(Video video) {
+        Intent intent = new Intent(this, BaseAddEditVideoActivity.class);
+        intent.putExtra("Video", video);
+        startActivity(intent);
     }
 }

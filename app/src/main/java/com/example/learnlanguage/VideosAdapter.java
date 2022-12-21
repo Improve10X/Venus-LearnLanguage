@@ -47,6 +47,9 @@ public class VideosAdapter extends RecyclerView.Adapter<VideoViewHolder> {
         holder.deleteBtn.setOnClickListener(view -> {
             onItemActionListener.onDelete(video.id);
         });
+        holder.itemView.setOnClickListener(view -> {
+            onItemActionListener.onEdit(video);
+        });
     }
 
     @Override
