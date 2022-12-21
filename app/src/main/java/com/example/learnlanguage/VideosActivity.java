@@ -1,13 +1,13 @@
 package com.example.learnlanguage;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ import retrofit2.Response;
 
 public class VideosActivity extends AppCompatActivity {
 
-    private ArrayList<Video> videos =   new ArrayList<>();
+    private ArrayList<Video> videos = new ArrayList<>();
     private RecyclerView videosRv;
     private VideosAdapter videosAdapter;
 
