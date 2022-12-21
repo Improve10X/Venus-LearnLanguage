@@ -54,6 +54,17 @@ public class VideosActivity extends AppCompatActivity {
     private void setupVideosAdapter() {
         videosAdapter = new VideosAdapter();
         videosAdapter.setVideos(videos);
+        videosAdapter.setOnItemActionListener(new OnItemActionListener() {
+            @Override
+            public void onDelete(String id) {
+                deleteVideo(id);
+            }
+
+            @Override
+            public void onEdit(Video video) {
+
+            }
+        });
         videosRv.setAdapter(videosAdapter);
     }
 
@@ -72,6 +83,24 @@ public class VideosActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<List<Video>> call, Throwable t) {
                 Toast.makeText(VideosActivity.this, "Failed to fetch videos", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void deleteVideo(String id) {
+        VideosApi videosApi = new VideosApi();
+        VideosService videosService = videosApi.createVideoService();
+        Call<Void> call = videosService.deleteVideo(id);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Toast.makeText(VideosActivity.this, "Successfully deleted", Toast.LENGTH_SHORT).show();
+                fetchVideos();
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(VideosActivity.this, "failed to delete the video", Toast.LENGTH_SHORT).show();
             }
         });
     }

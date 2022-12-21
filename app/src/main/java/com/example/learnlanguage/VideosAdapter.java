@@ -9,14 +9,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class VideosAdapter extends RecyclerView.Adapter<VideoViewHolder> {
 
     private List<Video> videos;
 
-    public void setVideos(List<Video> videos) {
+    private OnItemActionListener onItemActionListener;
+
+    void setOnItemActionListener(OnItemActionListener onItemActionListener) {
+        this.onItemActionListener = onItemActionListener;
+    }
+
+    void setVideos(List<Video> videos) {
         this.videos = videos;
         notifyDataSetChanged();
     }
@@ -39,6 +44,9 @@ public class VideosAdapter extends RecyclerView.Adapter<VideoViewHolder> {
         holder.uploadTimeTxt.setText(video.uploadedTime);
         Picasso.get().load(video.imageUrl).into(holder.imageUrlTxt);
         Picasso.get().load(video.channelLogoUrl).into(holder.channelLogoUrlTxt);
+        holder.deleteBtn.setOnClickListener(view -> {
+            onItemActionListener.onDelete(video.id);
+        });
     }
 
     @Override
