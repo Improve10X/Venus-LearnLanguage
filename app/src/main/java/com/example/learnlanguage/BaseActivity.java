@@ -6,6 +6,9 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.learnlanguage.api.VideosApi;
+import com.example.learnlanguage.api.VideosService;
+
 public class BaseActivity extends AppCompatActivity {
 
     protected VideosService videosService;

@@ -1,11 +1,14 @@
-package com.example.learnlanguage;
+package com.example.learnlanguage.api;
+
+import com.example.learnlanguage.Constants;
+import com.example.learnlanguage.api.VideosService;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class VideosApi {
 
-    VideosService createVideoService() {
+    public VideosService createVideoService() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
