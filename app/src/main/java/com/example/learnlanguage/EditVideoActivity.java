@@ -14,9 +14,9 @@ public class EditVideoActivity extends BaseAddEditVideoActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getIntent().hasExtra("Video")) {
+        if (getIntent().hasExtra(Constants.KEY_VIDEO)) {
             getSupportActionBar().setTitle("Edit Activity");
-            video = (Video) getIntent().getSerializableExtra("Video");
+            video = (Video) getIntent().getSerializableExtra(Constants.KEY_VIDEO);
             editBtn.setVisibility(View.VISIBLE);
             addBtn.setVisibility(View.GONE);
             showData();

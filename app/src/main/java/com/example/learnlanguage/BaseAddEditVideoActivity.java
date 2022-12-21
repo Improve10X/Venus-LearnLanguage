@@ -16,14 +16,11 @@ public class BaseAddEditVideoActivity extends BaseActivity {
     protected EditText channelLogoTextTxt;
     protected Button editBtn;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base_add_edit_video);
         setUpViews();
-
     }
 
     private void setUpViews() {
@@ -37,12 +34,4 @@ public class BaseAddEditVideoActivity extends BaseActivity {
         imageUrlTextTxt = findViewById(R.id.image_url_text_txt);
         channelLogoTextTxt = findViewById(R.id.channel_logo_url_text_txt);
     }
-
-
-
-
-
-
-
-
 }

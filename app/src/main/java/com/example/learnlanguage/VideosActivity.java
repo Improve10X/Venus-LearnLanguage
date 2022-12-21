@@ -19,15 +19,22 @@ public class VideosActivity extends BaseActivity {
     private ArrayList<Video> videos = new ArrayList<>();
     private RecyclerView videosRv;
     private VideosAdapter videosAdapter;
+    private Button addBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_videos);
         getSupportActionBar().setTitle("Videos");
+        setupViews();
         setupVideosRv();
         setupVideosAdapter();
         handleAdd();
+    }
+
+    private void setupViews() {
+        addBtn = findViewById(R.id.add_btn);
+        videosRv = findViewById(R.id.videos_rv);
     }
 
     @Override
@@ -37,7 +44,6 @@ public class VideosActivity extends BaseActivity {
     }
 
     private void handleAdd() {
-        Button addBtn = findViewById(R.id.add_btn);
         addBtn.setOnClickListener(view -> {
             Intent intent = new Intent(this, AddVideoActivity.class);
             startActivity(intent);
@@ -45,7 +51,6 @@ public class VideosActivity extends BaseActivity {
     }
 
     private void setupVideosRv() {
-        videosRv = findViewById(R.id.videos_rv);
         videosRv.setLayoutManager(new LinearLayoutManager(this));
     }
 
@@ -65,7 +70,6 @@ public class VideosActivity extends BaseActivity {
         });
         videosRv.setAdapter(videosAdapter);
     }
-
 
     private void fetchVideos() {
         Call<List<Video>> call = videosService.fetchVideos();
@@ -101,7 +105,7 @@ public class VideosActivity extends BaseActivity {
 
     private void editVideo(Video video) {
         Intent intent = new Intent(this, EditVideoActivity.class);
-        intent.putExtra("Video", video);
+        intent.putExtra(Constants.KEY_VIDEO, video);
         startActivity(intent);
     }
 }

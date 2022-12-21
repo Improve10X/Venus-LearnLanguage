@@ -14,7 +14,6 @@ import java.util.List;
 public class VideosAdapter extends RecyclerView.Adapter<VideoViewHolder> {
 
     private List<Video> videos;
-
     private OnItemActionListener onItemActionListener;
 
     void setOnItemActionListener(OnItemActionListener onItemActionListener) {
@@ -29,7 +28,7 @@ public class VideosAdapter extends RecyclerView.Adapter<VideoViewHolder> {
     @NonNull
     @Override
     public VideoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.videos_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.video_item, parent, false);
         VideoViewHolder videoViewHolder = new VideoViewHolder(view);
         return videoViewHolder;
     }

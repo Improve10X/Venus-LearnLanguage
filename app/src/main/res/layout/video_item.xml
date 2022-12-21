@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#FBF1F1"
+    android:backgroundTint="#FFFDFD"
     android:orientation="vertical">
 
     <LinearLayout
@@ -145,6 +147,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:adjustViewBounds="true"
+                            android:backgroundTint="#FAF7F7"
                             app:srcCompat="@drawable/ic_baseline_close_24" />
                     </LinearLayout>
                 </LinearLayout>

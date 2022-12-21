@@ -19,7 +19,6 @@ public class VideoViewHolder extends RecyclerView.ViewHolder {
     TextView viewsTxt;
     TextView uploadTimeTxt;
 
-
     public VideoViewHolder(@NonNull View itemView) {
         super(itemView);
         imageUrlTxt = itemView.findViewById(R.id.image_url_txt);

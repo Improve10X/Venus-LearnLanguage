@@ -12,15 +12,15 @@ import retrofit2.http.Path;
 
 public interface VideosService {
 
-    @GET("videos")
+    @GET(Constants.VIDEOS_END_POINT)
     Call<List<Video>> fetchVideos();
 
-    @POST("videos")
+    @POST(Constants.VIDEOS_END_POINT)
     Call<Video> createVideo(@Body Video video);
 
-    @DELETE("videos/{id}")
+    @DELETE(Constants.VIDEOS_END_POINT + "/{id}")
     Call<Void> deleteVideo(@Path("id") String id);
 
-    @PUT("videos/{id}")
+    @PUT(Constants.VIDEOS_END_POINT + "/{id}")
     Call<Void> updateVideo(@Path("id") String id, @Body Video video);
 }

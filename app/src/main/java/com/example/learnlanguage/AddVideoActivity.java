@@ -15,10 +15,10 @@ public class AddVideoActivity extends BaseAddEditVideoActivity{
         getSupportActionBar().setTitle("Add Video");
         editBtn.setVisibility(View.GONE);
         addBtn.setVisibility(View.VISIBLE);
-        addVideoBtn();
+        handleAddBtn();
     }
 
-    private void addVideoBtn() {
+    private void handleAddBtn() {
         addBtn.setOnClickListener(view -> {
             String title = titleTextTxt.getText().toString();
             String description = descriptionTextTxt.getText().toString();
@@ -26,12 +26,12 @@ public class AddVideoActivity extends BaseAddEditVideoActivity{
             String numberOfViews = numberOfViewsTextTxt.getText().toString();
             String uploadTime = uploadTimeTextTxt.getText().toString();
             String imageUrl = imageUrlTextTxt.getText().toString();
-            String channelLogo = channelLogoTextTxt.getText().toString();
-            setupAddVideo(title, description, channelName, numberOfViews, uploadTime, imageUrl, channelLogo);
+            String channelLogoUrl = channelLogoTextTxt.getText().toString();
+            addVideo(title, description, channelName, numberOfViews, uploadTime, imageUrl, channelLogoUrl);
         });
     }
 
-    private void setupAddVideo(String title, String description, String channelName, String numberOfViews, String uploadTime, String imageUrl, String channelLogo) {
+    private void addVideo(String title, String description, String channelName, String numberOfViews, String uploadTime, String imageUrl, String channelLogoUrl) {
         Video video = new Video();
         video.title = title;
         video.description = description;
@@ -39,7 +39,7 @@ public class AddVideoActivity extends BaseAddEditVideoActivity{
         video.numberOfViews = numberOfViews;
         video.uploadedTime = uploadTime;
         video.imageUrl = imageUrl;
-        video.channelLogoUrl = channelLogo;
+        video.channelLogoUrl = channelLogoUrl;
 
         Call<Video> call = videosService.createVideo(video);
         call.enqueue(new Callback<Video>() {
@@ -55,5 +55,4 @@ public class AddVideoActivity extends BaseAddEditVideoActivity{
             }
         });
     }
-
 }
