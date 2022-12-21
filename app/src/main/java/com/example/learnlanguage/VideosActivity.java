@@ -18,7 +18,7 @@ import retrofit2.Response;
 
 public class VideosActivity extends AppCompatActivity {
 
-    private ArrayList<Video> videos = new ArrayList<>();
+    private ArrayList<Video> videos =   new ArrayList<>();
     private RecyclerView videosRv;
     private VideosAdapter videosAdapter;
 
