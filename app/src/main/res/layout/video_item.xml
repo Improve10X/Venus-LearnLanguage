@@ -78,10 +78,18 @@
                                 android:text="TextView"
                                 android:textColor="#070707" />
 
+                            <View
+                                android:id="@+id/divider"
+                                android:layout_width="2dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="@android:drawable/status_bar_item_background" />
+
                             <TextView
                                 android:id="@+id/description_txt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginLeft="2dp"
                                 android:ellipsize="end"
                                 android:singleLine="true"
                                 android:text="TextView"
