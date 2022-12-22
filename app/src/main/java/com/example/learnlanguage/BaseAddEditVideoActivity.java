@@ -14,6 +14,7 @@ public class BaseAddEditVideoActivity extends BaseActivity {
     protected EditText uploadTimeTextTxt;
     protected EditText imageUrlTextTxt;
     protected EditText channelLogoTextTxt;
+    protected EditText youtubeVideoIdTxt;
     protected Button editBtn;
 
     @Override
@@ -33,5 +34,6 @@ public class BaseAddEditVideoActivity extends BaseActivity {
         uploadTimeTextTxt = findViewById(R.id.upload_time_text_txt);
         imageUrlTextTxt = findViewById(R.id.image_url_text_txt);
         channelLogoTextTxt = findViewById(R.id.channel_logo_url_text_txt);
+        youtubeVideoIdTxt = findViewById(R.id.youtube_player_view);
     }
 }

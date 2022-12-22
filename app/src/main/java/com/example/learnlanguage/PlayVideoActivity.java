@@ -6,27 +6,48 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.youtube.player.YouTubeBaseActivity;
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerView;
 import com.squareup.picasso.Picasso;
 
-public class PlayVideoActivity extends BaseActivity {
+public class PlayVideoActivity extends YouTubeBaseActivity {
 
     private Video video;
-    private ImageView imageUrlTxt;
     private ImageView channelLogoUrlTxt;
     private TextView titleTxt;
     private TextView descriptionTxt;
     private TextView channelNameTxt;
     private TextView viewsTxt;
     private TextView uploadTimeTxt;
+    private YouTubePlayerView youTubePlayerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_video);
-        getSupportActionBar().setTitle("Play Video");
             video = (Video) getIntent().getSerializableExtra(Constants.KEY_VIDEO);
             setupViews();
             showData();
+            setupYoutubeVideoPlayer();
+    }
+
+    private void setupYoutubeVideoPlayer() {
+        youTubePlayerView.initialize(Constants.YOUTUBE_API_KEY, new YouTubePlayer.OnInitializedListener() {
+            @Override
+            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
+                youTubePlayer.loadVideo(video.youtubeVideoId);
+                youTubePlayer.play();
+            }
+
+            @Override
+            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
+                Toast.makeText(PlayVideoActivity.this, "Failed to Youtube player", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void showData() {
@@ -35,16 +56,13 @@ public class PlayVideoActivity extends BaseActivity {
         channelNameTxt.setText(video.channelName);
         viewsTxt.setText(video.numberOfViews);
         uploadTimeTxt.setText(video.uploadedTime);
-        if(video.imageUrl != null && video.imageUrl.isEmpty() == false) {
-            Picasso.get().load(video.imageUrl).into(imageUrlTxt);
-        }
         if(video.channelLogoUrl != null && video.channelLogoUrl.isEmpty() == false) {
             Picasso.get().load(video.channelLogoUrl).into(channelLogoUrlTxt);
         }
     }
 
     private void setupViews() {
-        imageUrlTxt = findViewById(R.id.image_url_txt);
+        youTubePlayerView = findViewById(R.id.youtube_player_view);
         channelLogoUrlTxt = findViewById(R.id.channel_logo_url_txt);
         titleTxt = findViewById(R.id.title_txt);
         descriptionTxt = findViewById(R.id.description_txt);

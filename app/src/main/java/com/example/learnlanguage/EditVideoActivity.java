@@ -32,6 +32,7 @@ public class EditVideoActivity extends BaseAddEditVideoActivity {
         uploadTimeTextTxt.setText(video.uploadedTime);
         imageUrlTextTxt.setText(video.imageUrl);
         channelLogoTextTxt.setText(video.channelLogoUrl);
+        youtubeVideoIdTxt.setText(video.youtubeVideoId);
     }
 
     private void handleEditBtn() {
@@ -43,11 +44,12 @@ public class EditVideoActivity extends BaseAddEditVideoActivity {
             String uploadTime = uploadTimeTextTxt.getText().toString();
             String imageUrl = imageUrlTextTxt.getText().toString();
             String channelLogo = channelLogoTextTxt.getText().toString();
-            updateVideo(video.id, title, description, channelName, numberOfViews, uploadTime, imageUrl, channelLogo);
+            String youtubeVideoId = youtubeVideoIdTxt.getText().toString();
+            updateVideo(video.id, title, description, channelName, numberOfViews, uploadTime, imageUrl, channelLogo, youtubeVideoId);
         });
     }
 
-    private void updateVideo(String id, String title, String description, String channelName, String numberOfViews, String uploadTime, String imageUrl, String channelLogo) {
+    private void updateVideo(String id, String title, String description, String channelName, String numberOfViews, String uploadTime, String imageUrl, String channelLogo, String youtubeVideoId) {
         Video video = new Video();
         video.title = title;
         video.description = description;
@@ -56,6 +58,7 @@ public class EditVideoActivity extends BaseAddEditVideoActivity {
         video.uploadedTime = uploadTime;
         video.imageUrl = imageUrl;
         video.channelLogoUrl = channelLogo;
+        video.youtubeVideoId = youtubeVideoId;
 
         Call<Void> call = videosService.updateVideo(id, video);
         call.enqueue(new Callback<Void>() {

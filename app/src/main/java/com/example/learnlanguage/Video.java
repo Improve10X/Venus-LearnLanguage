@@ -15,4 +15,5 @@ public class Video implements Serializable {
     String channelName;
     String channelLogoUrl;
     String imageUrl;
+    String youtubeVideoId;
 }
