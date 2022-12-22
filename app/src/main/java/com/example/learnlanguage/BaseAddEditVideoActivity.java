@@ -34,6 +34,6 @@ public class BaseAddEditVideoActivity extends BaseActivity {
         uploadTimeTextTxt = findViewById(R.id.upload_time_text_txt);
         imageUrlTextTxt = findViewById(R.id.image_url_text_txt);
         channelLogoTextTxt = findViewById(R.id.channel_logo_url_text_txt);
-        youtubeVideoIdTxt = findViewById(R.id.youtube_player_view);
+        youtubeVideoIdTxt = findViewById(R.id.youtube_video_id_txt);
     }
 }
