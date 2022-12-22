@@ -164,6 +164,13 @@
                             android:adjustViewBounds="true"
                             android:backgroundTint="#FAF7F7"
                             app:srcCompat="@drawable/ic_baseline_close_24" />
+
+                        <ImageButton
+                            android:id="@+id/edit_btn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="#FAF9F9"
+                            app:srcCompat="@drawable/ic_baseline_edit_24" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

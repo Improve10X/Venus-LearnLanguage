@@ -59,6 +59,11 @@ public class VideosActivity extends BaseActivity {
         videosAdapter.setVideos(videos);
         videosAdapter.setOnItemActionListener(new OnItemActionListener() {
             @Override
+            public void onClicked(Video video) {
+               onClick(video);
+            }
+
+            @Override
             public void onDelete(String id) {
                 deleteVideo(id);
             }
@@ -105,6 +110,12 @@ public class VideosActivity extends BaseActivity {
 
     private void editVideo(Video video) {
         Intent intent = new Intent(this, EditVideoActivity.class);
+        intent.putExtra(Constants.KEY_VIDEO, video);
+        startActivity(intent);
+    }
+
+    private void onClick(Video video) {
+        Intent intent = new Intent(this, PlayVideoActivity.class);
         intent.putExtra(Constants.KEY_VIDEO, video);
         startActivity(intent);
     }
