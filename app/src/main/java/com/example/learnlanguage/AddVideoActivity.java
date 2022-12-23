@@ -13,21 +13,21 @@ public class AddVideoActivity extends BaseAddEditVideoActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setTitle("Add Video");
-        editBtn.setVisibility(View.GONE);
-        addBtn.setVisibility(View.VISIBLE);
+        binding.editBtn.setVisibility(View.GONE);
+        binding.addBtn.setVisibility(View.VISIBLE);
         handleAddBtn();
     }
 
     private void handleAddBtn() {
-        addBtn.setOnClickListener(view -> {
-            String title = titleTextTxt.getText().toString();
-            String description = descriptionTextTxt.getText().toString();
-            String channelName = channelNameTextTxt.getText().toString();
-            String numberOfViews = numberOfViewsTextTxt.getText().toString();
-            String uploadTime = uploadTimeTextTxt.getText().toString();
-            String imageUrl = imageUrlTextTxt.getText().toString();
-            String channelLogoUrl = channelLogoTextTxt.getText().toString();
-            String youtubeVideoId = youtubeVideoIdTxt.getText().toString();
+        binding.editBtn.setOnClickListener(view -> {
+            String title = binding.tilteTextTxt.getText().toString();
+            String description = binding.descriptionTextTxt.getText().toString();
+            String channelName = binding.channelNameTextTxt.getText().toString();
+            String numberOfViews = binding.numberofTextTxt.getText().toString();
+            String uploadTime = binding.uploadTimeTextTxt.getText().toString();
+            String imageUrl = binding.imageUrlTextTxt.getText().toString();
+            String channelLogoUrl = binding.channelLogoUrlTextTxt.getText().toString();
+            String youtubeVideoId = binding.youtubeVideoIdTxt.getText().toString();
             addVideo(title, description, channelName, numberOfViews, uploadTime, imageUrl, channelLogoUrl, youtubeVideoId);
         });
     }

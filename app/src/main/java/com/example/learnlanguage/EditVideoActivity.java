@@ -17,34 +17,34 @@ public class EditVideoActivity extends BaseAddEditVideoActivity {
         if (getIntent().hasExtra(Constants.KEY_VIDEO)) {
             getSupportActionBar().setTitle("Edit Activity");
             video = (Video) getIntent().getSerializableExtra(Constants.KEY_VIDEO);
-            editBtn.setVisibility(View.VISIBLE);
-            addBtn.setVisibility(View.GONE);
+            binding.editBtn.setVisibility(View.VISIBLE);
+            binding.addBtn.setVisibility(View.GONE);
             showData();
         }
         handleEditBtn();
     }
 
     private void showData() {
-        titleTextTxt.setText(video.title);
-        descriptionTextTxt.setText(video.description);
-        channelNameTextTxt.setText(video.channelName);
-        numberOfViewsTextTxt.setText(video.numberOfViews);
-        uploadTimeTextTxt.setText(video.uploadedTime);
-        imageUrlTextTxt.setText(video.imageUrl);
-        channelLogoTextTxt.setText(video.channelLogoUrl);
-        youtubeVideoIdTxt.setText(video.youtubeVideoId);
+        binding.tilteTextTxt.setText(video.title);
+        binding.descriptionTextTxt.setText(video.description);
+        binding.channelNameTextTxt.setText(video.channelName);
+        binding.numberofTextTxt.setText(video.numberOfViews);
+        binding.uploadTimeTextTxt.setText(video.uploadedTime);
+        binding.imageUrlTextTxt.setText(video.imageUrl);
+        binding.channelLogoUrlTextTxt.setText(video.channelLogoUrl);
+        binding.youtubeVideoIdTxt.setText(video.youtubeVideoId);
     }
 
     private void handleEditBtn() {
-        editBtn.setOnClickListener(view -> {
-            String title = titleTextTxt.getText().toString();
-            String description = descriptionTextTxt.getText().toString();
-            String channelName = channelNameTextTxt.getText().toString();
-            String numberOfViews = numberOfViewsTextTxt.getText().toString();
-            String uploadTime = uploadTimeTextTxt.getText().toString();
-            String imageUrl = imageUrlTextTxt.getText().toString();
-            String channelLogo = channelLogoTextTxt.getText().toString();
-            String youtubeVideoId = youtubeVideoIdTxt.getText().toString();
+        binding.editBtn.setOnClickListener(view -> {
+            String title = binding.tilteTextTxt.getText().toString();
+            String description = binding.descriptionTextTxt.getText().toString();
+            String channelName = binding.channelNameTextTxt.getText().toString();
+            String numberOfViews = binding.numberofTextTxt.getText().toString();
+            String uploadTime = binding.uploadTimeTextTxt.getText().toString();
+            String imageUrl = binding.imageUrlTextTxt.getText().toString();
+            String channelLogo = binding.channelLogoUrlTextTxt.getText().toString();
+            String youtubeVideoId = binding.youtubeVideoIdTxt.getText().toString();
             updateVideo(video.id, title, description, channelName, numberOfViews, uploadTime, imageUrl, channelLogo, youtubeVideoId);
         });
     }
