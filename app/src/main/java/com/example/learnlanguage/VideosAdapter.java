@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.learnlanguage.databinding.VideoItemBinding;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -28,28 +29,28 @@ public class VideosAdapter extends RecyclerView.Adapter<VideoViewHolder> {
     @NonNull
     @Override
     public VideoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.video_item, parent, false);
-        VideoViewHolder videoViewHolder = new VideoViewHolder(view);
+        VideoItemBinding binding = VideoItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        VideoViewHolder videoViewHolder = new VideoViewHolder(binding);
         return videoViewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull VideoViewHolder holder, int position) {
         Video video = videos.get(position);
-        holder.titleTxt.setText(video.title);
-        holder.descriptionTxt.setText(video.description);
-        holder.channelNameTxt.setText(video.channelName);
-        holder.viewsTxt.setText(video.numberOfViews);
-        holder.uploadTimeTxt.setText(video.uploadedTime);
-        Picasso.get().load(video.imageUrl).into(holder.imageUrlTxt);
-        Picasso.get().load(video.channelLogoUrl).into(holder.channelLogoUrlTxt);
-        holder.deleteBtn.setOnClickListener(view -> {
+        holder.binding.titleText.setText(video.title);
+        holder.binding.descriptionTxt.setText(video.description);
+        holder.binding.channelNameTxt.setText(video.channelName);
+        holder.binding.viewsTxt.setText(video.numberOfViews);
+        holder.binding.uploadTimeTxt.setText(video.uploadedTime);
+        Picasso.get().load(video.imageUrl).into(holder.binding.imageUrlText);
+        Picasso.get().load(video.channelLogoUrl).into(holder.binding.channelLogoUrlTxt);
+        holder.binding.deleteBtn.setOnClickListener(view -> {
             onItemActionListener.onDelete(video.id);
         });
-        holder.itemView.setOnClickListener(view -> {
+        holder.binding.getRoot().setOnClickListener(view -> {
             onItemActionListener.onClicked(video);
         });
-        holder.editBtn.setOnClickListener(view -> {
+        holder.binding.editBtn.setOnClickListener(view -> {
             onItemActionListener.onEdit(video);
         });
     }
