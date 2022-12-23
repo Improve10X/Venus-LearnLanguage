@@ -2,10 +2,10 @@ package com.example.learnlanguage;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.learnlanguage.databinding.ActivityVideosBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,25 +16,19 @@ import retrofit2.Response;
 
 public class VideosActivity extends BaseActivity {
 
+    private ActivityVideosBinding binding;
     private ArrayList<Video> videos = new ArrayList<>();
-    private RecyclerView videosRv;
     private VideosAdapter videosAdapter;
-    private Button addBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_videos);
+        binding = ActivityVideosBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         getSupportActionBar().setTitle("Videos");
-        setupViews();
         setupVideosRv();
         setupVideosAdapter();
         handleAdd();
-    }
-
-    private void setupViews() {
-        addBtn = findViewById(R.id.add_btn);
-        videosRv = findViewById(R.id.videos_rv);
     }
 
     @Override
@@ -44,14 +38,15 @@ public class VideosActivity extends BaseActivity {
     }
 
     private void handleAdd() {
-        addBtn.setOnClickListener(view -> {
+        binding.addBtn.setOnClickListener(view -> {
             Intent intent = new Intent(this, AddVideoActivity.class);
             startActivity(intent);
         });
     }
 
     private void setupVideosRv() {
-        videosRv.setLayoutManager(new LinearLayoutManager(this));
+
+        binding.videosRv.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void setupVideosAdapter() {
@@ -73,7 +68,7 @@ public class VideosActivity extends BaseActivity {
                 editVideo(video);
             }
         });
-        videosRv.setAdapter(videosAdapter);
+        binding.videosRv.setAdapter(videosAdapter);
     }
 
     private void fetchVideos() {
